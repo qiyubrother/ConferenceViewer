@@ -153,7 +153,7 @@ namespace zntbkt
             {
                 usrList = GetConferenceRoomUserList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (ex.Message == $"-ERR Conference {_conferenceId}-{_serverAddress} not found")
                 {
@@ -214,6 +214,88 @@ namespace zntbkt
             Console.WriteLine($"RTN:{result}");
             return result.StartsWith("+OK");
         }
+
+        /// <summary>
+        /// 获取会议室成员的输出音量（MicPhone volume）
+        /// </summary>
+        /// <param name="userCode"></param>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        public bool GetMicPhoneVolume(int userCode, out int volume)
+        {
+            var url = $"http://{_serverAddress}:{_serverPort}/api/conference?{_conferenceId}-{_serverAddress}%20volume_in%20{userCode}";
+            Console.WriteLine($"CMD:{url}");
+            var result = GetResponse(url, out string statusCode);
+            Console.WriteLine($"RTN:{result}");
+            if (result.StartsWith("+OK"))
+            {
+                var pos = result.IndexOf('=') + 1;
+                volume = Convert.ToInt32(result.Substring(pos + 1)); // -4, -3, -2, -1, 0, 1, 2, 3, 4
+            }
+            else
+            {
+                volume = -5; // Invalid value
+            }
+
+            return result.StartsWith("+OK");
+        }
+        /// <summary>
+        /// 获取会议室成员的输入音量（Speaker volume）
+        /// </summary>
+        /// <param name="userCode"></param>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        public bool GetSpeakerVolume(int userCode, out int volume)
+        {
+            var url = $"http://{_serverAddress}:{_serverPort}/api/conference?{_conferenceId}-{_serverAddress}%20volume_out%20{userCode}";
+            Console.WriteLine($"CMD:{url}");
+            var result = GetResponse(url, out string statusCode);
+            Console.WriteLine($"RTN:{result}");
+            if (result.StartsWith("+OK"))
+            {
+                var pos = result.IndexOf('=') + 1;
+                volume = Convert.ToInt32(result.Substring(pos + 1)); // -4, -3, -2, -1, 0, 1, 2, 3, 4
+            }
+            else
+            {
+                volume = -5; // Invalid value
+            }
+
+            return result.StartsWith("+OK");
+        }
+        /// <summary>
+        /// 设置会议室成员的输出音量（MicPhone volume）
+        /// </summary>
+        /// <param name="userCode"></param>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        public bool SetMicPhoneVolume(int userCode, int volume)
+        {
+            var url = $"http://{_serverAddress}:{_serverPort}/api/conference?{_conferenceId}-{_serverAddress}%20volume_in%20{userCode}%20{volume}";
+            Console.WriteLine($"CMD:{url}");
+            var result = GetResponse(url, out string statusCode);
+            Console.WriteLine($"RTN:{result}");
+
+            return result.StartsWith("+OK");
+        }
+
+        /// <summary>
+        /// 获取会议室成员的输入音量（Speaker volume）
+        /// </summary>
+        /// <param name="userCode"></param>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        public bool SetSpeakerVolume(int userCode, int volume)
+        {
+            var url = $"http://{_serverAddress}:{_serverPort}/api/conference?{_conferenceId}-{_serverAddress}%20volume_out%20{userCode}%20{volume}";
+            Console.WriteLine($"CMD:{url}");
+            var result = GetResponse(url, out string statusCode);
+            Console.WriteLine($"RTN:{result}");
+
+            return result.StartsWith("+OK");
+        }
+
+
         //public bool SetConferenceRoomPrimarySpeaker(string userId, IEnumerable<ConferenceRoomUser> userList, out string errorMessage)
         //{
         //    var u = userList.FirstOrDefault(x => x.UserId == userId);
@@ -253,7 +335,8 @@ namespace zntbkt
                 }
                 return string.Empty;
             }
-            catch {
+            catch
+            {
                 statusCode = response == null ? string.Empty : response.StatusCode.ToString();
             }
             return string.Empty;

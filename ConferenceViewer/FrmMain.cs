@@ -90,5 +90,33 @@ namespace ConferenceViewer
                 }
             }
         }
+
+        private void btnSetMicPhoneVolume_Click(object sender, EventArgs e)
+        {
+            ConferenceRoomManagement crm = new ConferenceRoomManagement(txtConference.Text, txtAddress.Text, txtPort.Text);
+            crm.SetMicPhoneVolume(Convert.ToInt32(txtUserCode.Text), (int)numericUpDown1.Value);
+        }
+
+        private void btnGetMicphoneVolume_Click(object sender, EventArgs e)
+        {
+            ConferenceRoomManagement crm = new ConferenceRoomManagement(txtConference.Text, txtAddress.Text, txtPort.Text);
+            int volume;
+            crm.GetMicPhoneVolume(Convert.ToInt32(txtUserCode.Text), out volume);
+            txtRtnVolume.Text = volume.ToString();
+        }
+
+        private void btnSetSpeaker_Click(object sender, EventArgs e)
+        {
+            ConferenceRoomManagement crm = new ConferenceRoomManagement(txtConference.Text, txtAddress.Text, txtPort.Text);
+            crm.SetSpeakerVolume(Convert.ToInt32(txtUserCode.Text), (int)numericUpDown1.Value);
+        }
+
+        private void btnGetSpeakerVolume_Click(object sender, EventArgs e)
+        {
+            ConferenceRoomManagement crm = new ConferenceRoomManagement(txtConference.Text, txtAddress.Text, txtPort.Text);
+            int volume;
+            crm.GetSpeakerVolume(Convert.ToInt32(txtUserCode.Text), out volume);
+            txtRtnVolume.Text = volume.ToString();
+        }
     }
 }
