@@ -105,7 +105,6 @@ namespace zntbkt
         /// <returns></returns>
         public bool MuteConferenceUser(string userCode, out string errorMessage)
         {
-
             var oldList = GetConferenceRoomUserList();
             var _CancelMuteList = oldList.Where(x => x.AudioStatus == EnumAudioStatus.Speak && x.UserCode != userCode);
 
@@ -293,6 +292,27 @@ namespace zntbkt
             Console.WriteLine($"RTN:{result}");
 
             return result.StartsWith("+OK");
+        }
+
+
+        public bool IsExistConferenceRoom()
+        {
+            var lst = new List<ConferenceRoomUser>();
+            var url = $"http://{_serverAddress}:{_serverPort}/api/conference?{_conferenceId}-{_serverAddress}%20list";
+            Console.WriteLine($"CMD:{url}");
+            var result = GetResponse(url, out string statusCode);
+            var lines = result.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var line in lines)
+            {
+                Console.WriteLine($"RTN:{line}");
+                if (line.StartsWith("-ERR"))
+                {
+                    return false;
+                }
+                return true;
+            }
+
+            return false;
         }
 
 

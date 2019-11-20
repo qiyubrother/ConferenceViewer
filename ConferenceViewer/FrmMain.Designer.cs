@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnGetSpeakerVolume = new System.Windows.Forms.Button();
+            this.btnSetSpeaker = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtRtnVolume = new System.Windows.Forms.TextBox();
+            this.btnGetMicphoneVolume = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSetMicPhoneVolume = new System.Windows.Forms.Button();
             this.btnCancelMute = new System.Windows.Forms.Button();
             this.btnMute = new System.Windows.Forms.Button();
             this.btnCancelMuteAll = new System.Windows.Forms.Button();
@@ -43,14 +51,7 @@
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.btnSetMicPhoneVolume = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.btnGetMicphoneVolume = new System.Windows.Forms.Button();
-            this.txtRtnVolume = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnSetSpeaker = new System.Windows.Forms.Button();
-            this.btnGetSpeakerVolume = new System.Windows.Forms.Button();
+            this.btnQueryAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -69,6 +70,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.LemonChiffon;
+            this.splitContainer1.Panel1.Controls.Add(this.btnQueryAll);
             this.splitContainer1.Panel1.Controls.Add(this.btnGetSpeakerVolume);
             this.splitContainer1.Panel1.Controls.Add(this.btnSetSpeaker);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
@@ -97,6 +99,89 @@
             this.splitContainer1.Size = new System.Drawing.Size(1332, 450);
             this.splitContainer1.SplitterDistance = 97;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnGetSpeakerVolume
+            // 
+            this.btnGetSpeakerVolume.Location = new System.Drawing.Point(1112, 66);
+            this.btnGetSpeakerVolume.Name = "btnGetSpeakerVolume";
+            this.btnGetSpeakerVolume.Size = new System.Drawing.Size(131, 23);
+            this.btnGetSpeakerVolume.TabIndex = 14;
+            this.btnGetSpeakerVolume.Text = "Get Speaker Volume";
+            this.btnGetSpeakerVolume.UseVisualStyleBackColor = true;
+            this.btnGetSpeakerVolume.Click += new System.EventHandler(this.btnGetSpeakerVolume_Click);
+            // 
+            // btnSetSpeaker
+            // 
+            this.btnSetSpeaker.Location = new System.Drawing.Point(975, 66);
+            this.btnSetSpeaker.Name = "btnSetSpeaker";
+            this.btnSetSpeaker.Size = new System.Drawing.Size(131, 23);
+            this.btnSetSpeaker.TabIndex = 13;
+            this.btnSetSpeaker.Text = "Set Speaker Volume";
+            this.btnSetSpeaker.UseVisualStyleBackColor = true;
+            this.btnSetSpeaker.Click += new System.EventHandler(this.btnSetSpeaker_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1247, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Result";
+            // 
+            // txtRtnVolume
+            // 
+            this.txtRtnVolume.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtRtnVolume.Location = new System.Drawing.Point(1249, 43);
+            this.txtRtnVolume.Name = "txtRtnVolume";
+            this.txtRtnVolume.Size = new System.Drawing.Size(53, 21);
+            this.txtRtnVolume.TabIndex = 16;
+            // 
+            // btnGetMicphoneVolume
+            // 
+            this.btnGetMicphoneVolume.Location = new System.Drawing.Point(1112, 43);
+            this.btnGetMicphoneVolume.Name = "btnGetMicphoneVolume";
+            this.btnGetMicphoneVolume.Size = new System.Drawing.Size(131, 23);
+            this.btnGetMicphoneVolume.TabIndex = 13;
+            this.btnGetMicphoneVolume.Text = "Get MicPhone Volume";
+            this.btnGetMicphoneVolume.UseVisualStyleBackColor = true;
+            this.btnGetMicphoneVolume.Click += new System.EventHandler(this.btnGetMicphoneVolume_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(902, 43);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(67, 21);
+            this.numericUpDown1.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(900, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Volume";
+            // 
+            // btnSetMicPhoneVolume
+            // 
+            this.btnSetMicPhoneVolume.Location = new System.Drawing.Point(975, 43);
+            this.btnSetMicPhoneVolume.Name = "btnSetMicPhoneVolume";
+            this.btnSetMicPhoneVolume.Size = new System.Drawing.Size(131, 23);
+            this.btnSetMicPhoneVolume.TabIndex = 12;
+            this.btnSetMicPhoneVolume.Text = "Set MicPhone Volume";
+            this.btnSetMicPhoneVolume.UseVisualStyleBackColor = true;
+            this.btnSetMicPhoneVolume.Click += new System.EventHandler(this.btnSetMicPhoneVolume_Click);
             // 
             // btnCancelMute
             // 
@@ -225,88 +310,15 @@
             this.listBox1.Size = new System.Drawing.Size(1332, 349);
             this.listBox1.TabIndex = 0;
             // 
-            // btnSetMicPhoneVolume
+            // btnQueryAll
             // 
-            this.btnSetMicPhoneVolume.Location = new System.Drawing.Point(975, 43);
-            this.btnSetMicPhoneVolume.Name = "btnSetMicPhoneVolume";
-            this.btnSetMicPhoneVolume.Size = new System.Drawing.Size(131, 23);
-            this.btnSetMicPhoneVolume.TabIndex = 12;
-            this.btnSetMicPhoneVolume.Text = "Set MicPhone Volume";
-            this.btnSetMicPhoneVolume.UseVisualStyleBackColor = true;
-            this.btnSetMicPhoneVolume.Click += new System.EventHandler(this.btnSetMicPhoneVolume_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(900, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Volume";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(902, 43);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(67, 21);
-            this.numericUpDown1.TabIndex = 15;
-            // 
-            // btnGetMicphoneVolume
-            // 
-            this.btnGetMicphoneVolume.Location = new System.Drawing.Point(1112, 43);
-            this.btnGetMicphoneVolume.Name = "btnGetMicphoneVolume";
-            this.btnGetMicphoneVolume.Size = new System.Drawing.Size(131, 23);
-            this.btnGetMicphoneVolume.TabIndex = 13;
-            this.btnGetMicphoneVolume.Text = "Get MicPhone Volume";
-            this.btnGetMicphoneVolume.UseVisualStyleBackColor = true;
-            this.btnGetMicphoneVolume.Click += new System.EventHandler(this.btnGetMicphoneVolume_Click);
-            // 
-            // txtRtnVolume
-            // 
-            this.txtRtnVolume.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtRtnVolume.Location = new System.Drawing.Point(1249, 43);
-            this.txtRtnVolume.Name = "txtRtnVolume";
-            this.txtRtnVolume.Size = new System.Drawing.Size(53, 21);
-            this.txtRtnVolume.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1247, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Result";
-            // 
-            // btnSetSpeaker
-            // 
-            this.btnSetSpeaker.Location = new System.Drawing.Point(975, 66);
-            this.btnSetSpeaker.Name = "btnSetSpeaker";
-            this.btnSetSpeaker.Size = new System.Drawing.Size(131, 23);
-            this.btnSetSpeaker.TabIndex = 13;
-            this.btnSetSpeaker.Text = "Set Speaker Volume";
-            this.btnSetSpeaker.UseVisualStyleBackColor = true;
-            this.btnSetSpeaker.Click += new System.EventHandler(this.btnSetSpeaker_Click);
-            // 
-            // btnGetSpeakerVolume
-            // 
-            this.btnGetSpeakerVolume.Location = new System.Drawing.Point(1112, 66);
-            this.btnGetSpeakerVolume.Name = "btnGetSpeakerVolume";
-            this.btnGetSpeakerVolume.Size = new System.Drawing.Size(131, 23);
-            this.btnGetSpeakerVolume.TabIndex = 14;
-            this.btnGetSpeakerVolume.Text = "Get Speaker Volume";
-            this.btnGetSpeakerVolume.UseVisualStyleBackColor = true;
-            this.btnGetSpeakerVolume.Click += new System.EventHandler(this.btnGetSpeakerVolume_Click);
+            this.btnQueryAll.Location = new System.Drawing.Point(316, 70);
+            this.btnQueryAll.Name = "btnQueryAll";
+            this.btnQueryAll.Size = new System.Drawing.Size(79, 23);
+            this.btnQueryAll.TabIndex = 18;
+            this.btnQueryAll.Text = "Query All";
+            this.btnQueryAll.UseVisualStyleBackColor = true;
+            this.btnQueryAll.Click += new System.EventHandler(this.btnQueryAll_Click);
             // 
             // FrmMain
             // 
@@ -351,6 +363,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSetSpeaker;
         private System.Windows.Forms.Button btnGetSpeakerVolume;
+        private System.Windows.Forms.Button btnQueryAll;
     }
 }
 
