@@ -189,7 +189,7 @@ namespace ConferenceViewer
                 crm.GetSpeakerVolume(Convert.ToInt32(userCode), out speakerVolume);
                 int micPhoneVolume;
                 crm.GetMicPhoneVolume(Convert.ToInt32(userCode), out micPhoneVolume);
-                sb.Append($"会议室ID={txtConference.Text}，用户代码={userCode}，用户ID={userId}，是否静音={isMuted}，输入音量={micPhoneVolume}，输出音量={speakerVolume}{System.Environment.NewLine}");
+                sb.Append($"会议室ID={txtConference.Text}，用户代码={userCode}，用户ID={userId}，是否静音={isMuted}，输入={micPhoneVolume}，输出={speakerVolume}{System.Environment.NewLine}");
             }
             MessageBox.Show(sb.ToString());
         }

@@ -282,7 +282,7 @@
             this.txtConference.Name = "txtConference";
             this.txtConference.Size = new System.Drawing.Size(79, 21);
             this.txtConference.TabIndex = 2;
-            this.txtConference.Text = "35202";
+            this.txtConference.Text = "35226";
             // 
             // txtPort
             // 
